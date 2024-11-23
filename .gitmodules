@@ -1,3 +1,6 @@
 [submodule "NestApp/vendor/spdlog"]
 	path = NestApp/vendor/spdlog
 	url = git@github.com:Jerryym/spdlog.git
+[submodule "NestUI/vendor/SARibbon"]
+	path = NestUI/vendor/SARibbon
+	url = git@github.com:Jerryym/SARibbon.git
