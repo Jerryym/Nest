@@ -22,8 +22,10 @@ if(NOT TARGET NestApp)
     find_package(NestApp REQUIRED)
 endif()
 target_link_libraries(example PUBLIC NestApp)
+target_link_libraries(example PUBLIC NestUI)
 target_link_libraries(example PUBLIC
     Qt${QT_VERSION_MAJOR}::Core 
+    Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::Widgets
 )
 
@@ -37,12 +39,34 @@ set_target_properties(example PROPERTIES
     EXPORT_NAME NestAppExample
     
     # Debug
-    RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/../bin/Debug-windows-x86_64/example
-    ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/../bin/Debug-windows-x86_64/example
-    LIBRARY_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/../bin/Debug-windows-x86_64/example
+    RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/../bin/Debug-windows-x86_64/example
+    ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/../bin/Debug-windows-x86_64/example
+    LIBRARY_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/../bin/Debug-windows-x86_64/example
 
     # Release
-    RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/../bin/Release-windows-x86_64/example
-    ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/../bin/Release-windows-x86_64/example
-    LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/../bin/Release-windows-x86_64/example
+    RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/../bin/Release-windows-x86_64/example
+    ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/../bin/Release-windows-x86_64/example
+    LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/../bin/Release-windows-x86_64/example
+)
+
+# 设置生成后事件
+add_custom_command(
+    TARGET example POST_BUILD
+
+    # 复制NestApp的DLL文件到相应的文件夹
+    COMMAND ${CMAKE_COMMAND} -E copy
+    $<TARGET_FILE:NestApp> # 获取生成的 DLL 文件
+    $<IF:$<CONFIG:Debug>,${CMAKE_BINARY_DIR}/bin/Debug-windows-x86_64/example/NestAppd.dll,${CMAKE_BINARY_DIR}/bin/Release-windows-x86_64/example/NestApp.dll>
+
+	# 复制SARibbon的DLL文件到相应的文件夹
+	COMMAND ${CMAKE_COMMAND} -E copy
+    $<TARGET_FILE:SARibbonBar> # 获取生成的 DLL 文件
+    $<IF:$<CONFIG:Debug>,${CMAKE_BINARY_DIR}/bin/Debug-windows-x86_64/example/SARibbonBard.dll,${CMAKE_BINARY_DIR}/bin/Release-windows-x86_64/example/SARibbonBar.dll>
+
+    # 复制NestUI的DLL文件到相应的文件夹
+    COMMAND ${CMAKE_COMMAND} -E copy
+    $<TARGET_FILE:NestUI> # 获取生成的 DLL 文件
+    $<IF:$<CONFIG:Debug>,${CMAKE_BINARY_DIR}/bin/Debug-windows-x86_64/example/NestUId.dll,${CMAKE_BINARY_DIR}/bin/Release-windows-x86_64/example/NestUI.dll>
+
+    VERBATIM
 )

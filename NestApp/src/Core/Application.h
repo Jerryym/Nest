@@ -13,7 +13,7 @@ namespace NestApp {
 		Q_OBJECT
 	public:
 		Application(int& argc, char** argv);
-		virtual ~Application() {}
+		virtual ~Application();
 
 		/// @brief 运行应用程序
 		virtual void Run();

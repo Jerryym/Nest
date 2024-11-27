@@ -9,7 +9,7 @@ Nest是一个基于Qt6.5.3版本的通用软件开发框架。此项目是一个
 
 ## Modules
 
-* Nest：此项目为框架核心，是一个 `.dll`项目。内部包含 `Application`、基于[spdlog](https://github.com/gabime/spdlog)库封装的日志模块。
+* NestApp：此项目为框架核心，是一个 `.dll`项目。内部包含 `Application`、基于[spdlog](https://github.com/gabime/spdlog)库封装的日志模块。
 * NestUI：此项目为框架UI库，是一个 `.dll`项目。内部包含了第三方开源UI库[SARibbon](https://github.com/Jerryym/SARibbon)、 `MainWindow`、`DockWidget`、`DockWidgetManager`等。
 
 ## Dependencies
