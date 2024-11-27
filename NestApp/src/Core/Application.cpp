@@ -16,10 +16,14 @@ namespace NestApp {
 		NEST_CLIENT_INFO("Hello, Nest Framework!");
 	}
 
+	Application::~Application()
+	{
+	}
+
 	void Application::Run()
 	{
 		//启动主窗口
-		m_Window.get()->show();
+		m_Window->show();
 	}
 
 	void Application::SetMainWindow(QMainWindow* mainWindow)

@@ -7,6 +7,8 @@ project(NestUI VERSION ${NEST_VERSION} LANGUAGES CXX)
 set(NESTUI_LIB_NAME NestUI)
 message(STATUS "NESTUI_LIB_NAME: ${NESTUI_LIB_NAME}")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
 # 定义头列表
 set(NESTUI_HEADERS
@@ -41,8 +43,7 @@ target_include_directories(${NESTUI_LIB_NAME} PUBLIC
 
 # 添加SARibbon
 add_subdirectory(vendor/SARibbon)
-set(SARibbonBar_DIR ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/../bin/Debug-windows-x86_64/NestUI)
-target_link_libraries(${NESTUI_LIB_NAME} PRIVATE SARibbonBar::SARibbonBar)
+target_link_libraries(${NESTUI_LIB_NAME} PUBLIC SARibbonBar::SARibbonBar)
 
 #################################################
 # Qt相关的依赖
@@ -85,3 +86,25 @@ file(GLOB Base_SRC "src/*.h" "src/*.cpp")
 file(GLOB GUI_SRC "src/GUI/*.h" "src/GUI/*.cpp")
 source_group("src" FILES ${Base_SRC})
 source_group("src\\GUI" FILES ${GUI_SRC})
+
+# 设置生成后事件
+add_custom_command(
+    TARGET ${NESTUI_LIB_NAME} POST_BUILD
+
+    # 创建 Debug 或 Release 的目标文件夹
+    COMMAND ${CMAKE_COMMAND} -E make_directory
+    $<IF:$<CONFIG:Debug>,${CMAKE_BINARY_DIR}/bin/Debug-windows-x86_64/Nest,${CMAKE_BINARY_DIR}/bin/Release-windows-x86_64/Nest>
+
+	# 复制SARibbon的DLL文件到相应的文件夹
+	COMMAND ${CMAKE_COMMAND} -E copy
+    $<TARGET_FILE:SARibbonBar> # 获取生成的 DLL 文件
+    $<IF:$<CONFIG:Debug>,${CMAKE_BINARY_DIR}/bin/Debug-windows-x86_64/Nest/SARibbonBard.dll,${CMAKE_BINARY_DIR}/bin/Release-windows-x86_64/Nest/SARibbonBar.dll>
+
+    # 复制NestUI的DLL文件到相应的文件夹
+    COMMAND ${CMAKE_COMMAND} -E copy
+    $<TARGET_FILE:${NESTUI_LIB_NAME}> # 获取生成的 DLL 文件
+    $<IF:$<CONFIG:Debug>,${CMAKE_BINARY_DIR}/bin/Debug-windows-x86_64/Nest/NestUId.dll,${CMAKE_BINARY_DIR}/bin/Release-windows-x86_64/Nest/NestUI.dll>
+
+    COMMENT "Copying NestUI DLL to Nest folder"
+    VERBATIM
+)

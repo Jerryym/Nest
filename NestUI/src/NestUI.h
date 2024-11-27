@@ -2,4 +2,4 @@
 
 #include "GUI/MainWindow.h"
 #include "GUI/DockWidget.h"
-#include "DockWidgetManager.h"
+#include "Core/DockWidgetManager.h"

@@ -56,7 +56,7 @@ set(NEST_PLATFORM "x64")
 # 添加子项目
 ##################################
 add_subdirectory(NestApp)
-# add_subdirectory(NestUI)
+add_subdirectory(NestUI)
 
 # example
 if(NEST_BUILD_EXAMPLE)
