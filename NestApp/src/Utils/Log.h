@@ -3,6 +3,7 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/fmt/ostr.h"
+#include "spdlog/sinks/qt_sinks.h"
 
 namespace NestApp {
 
@@ -10,9 +11,14 @@ namespace NestApp {
 	class Log
 	{
 	public:
-		/// @brief 初始化日志系统
+		/// @brief 初始化日志系统(Log to Console)
 		static void Init();
+		/// @brief 初始化日志系统(Log to Qt)
+		/// @param pTextEdit 
+		/// @param iMaxLines 日志最大行数
+		static void Init(QTextEdit* pTextEdit, int iMaxLines = 500);
 
+	public:
 		/// @brief 获取框架日志
 		/// @return 
 		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
