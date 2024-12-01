@@ -2,7 +2,6 @@
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeUserPresets.json
-CMakePresets.json
 
 # 生成文件
 CMakeFiles
