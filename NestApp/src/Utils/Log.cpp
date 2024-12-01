@@ -20,4 +20,18 @@ namespace NestApp {
 		s_ClientLogger->set_level(spdlog::level::trace);
 	}
 
+	void Log::Init(QTextEdit* pTextEdit, int iMaxLines)
+	{
+		// 更改日志模式
+		spdlog::set_pattern("%^[%T] %n: %v%$");
+
+		// 初始化框架日志对象的颜色和等级
+		s_CoreLogger = spdlog::qt_color_logger_mt("NEST", pTextEdit, iMaxLines);
+		s_CoreLogger->set_level(spdlog::level::trace);
+
+		// 初始化客户端日志对象的颜色和等级
+		s_ClientLogger = spdlog::qt_color_logger_mt("APP", pTextEdit, iMaxLines);
+		s_ClientLogger->set_level(spdlog::level::trace);
+	}
+
 }
