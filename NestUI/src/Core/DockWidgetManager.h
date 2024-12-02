@@ -1,6 +1,6 @@
 #pragma once
 #include "Base.h"
-#include "GUI/MainWindow.h"
+#include "GUI/NestMainWindow.h"
 
 namespace NestUI {
 
