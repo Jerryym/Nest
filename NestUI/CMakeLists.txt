@@ -13,7 +13,7 @@ set(CMAKE_AUTORCC ON)
 # 定义头列表
 set(NESTUI_HEADERS
 	src/Base.h
-	src/GUI/MainWindow.h
+	src/GUI/NestMainWindow.h
 	src/GUI/DockWidget.h
 	src/Core/DockWidgetManager.h
 	src/NestUI.h
@@ -21,7 +21,7 @@ set(NESTUI_HEADERS
 
 # 定义源文件列表
 set(NESTUI_SOURCES
-	src/GUI/MainWindow.cpp
+	src/GUI/NestMainWindow.cpp
 	src/GUI/DockWidget.cpp
 	src/Core/DockWidgetManager.cpp
 )

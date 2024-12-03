@@ -13,6 +13,8 @@ message(STATUS "Current Qt Version: Qt${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${
 qt_standard_project_setup()
 
 add_executable(example 
+    src/MainWindow.h
+	src/MainWindow.cpp
     src/main.cpp
 )
 

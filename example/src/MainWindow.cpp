@@ -1,10 +1,9 @@
-#include "nestuipch.h"
 #include "MainWindow.h"
 
-namespace NestUI {
+namespace Example {
 
-	MainWindow::MainWindow(QWidget* parent, const sWindowProp& sProp)
-		: SARibbonMainWindow(parent), m_sProp(sProp)
+	MainWindow::MainWindow(QWidget* parent, const NestUI::sWindowProp& sProp)
+		: NestUI::NestMainWindow(parent), m_sProp(sProp)
 	{
 		//设置窗口标题
 		setWindowTitle(sProp.m_STitle);

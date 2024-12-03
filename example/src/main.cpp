@@ -1,12 +1,11 @@
 #include "NestApp.h"
-#include "NestUI.h"
-#include <iostream>
+#include "MainWindow.h"
 
 int main(int argc, char* argv[])
 {
 	NestApp::Application app(argc, argv);
 
-	NestUI::MainWindow* pMainWindow = new NestUI::MainWindow;
+	Example::MainWindow* pMainWindow = new Example::MainWindow;
 	app.SetMainWindow(pMainWindow);
 	app.Run();
 
