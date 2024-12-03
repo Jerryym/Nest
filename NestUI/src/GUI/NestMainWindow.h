@@ -16,7 +16,7 @@ namespace NestUI {
 		{}
 	}sWindowProp;
 
-	/// @brief 主窗口
+	/// @brief 窗口基类
 	class NESTUI_API NestMainWindow : public SARibbonMainWindow
 	{
 		Q_OBJECT
