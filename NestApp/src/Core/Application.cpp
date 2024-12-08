@@ -9,11 +9,6 @@ namespace NestApp {
 		: QApplication(argc, argv)
 	{
 		s_Instance = this;
-
-		//初始化日志系统
-		NestApp::Log::Init();
-		NEST_CORE_WARN("Initialiazed Log!");
-		NEST_CLIENT_INFO("Hello, Nest Framework!");
 	}
 
 	Application::~Application()
