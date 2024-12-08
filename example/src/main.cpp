@@ -5,8 +5,8 @@
 int main(int argc, char* argv[])
 {
 	SARibbonBar::initHighDpi();
-
 	NestApp::Application app(argc, argv);
+
 	//初始化日志系统
 	NestApp::Log::Init();
 	NEST_CORE_WARN("Initialiazed Log!");

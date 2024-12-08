@@ -8,7 +8,7 @@
 namespace NestApp {
 
 	/// @brief 日志
-	class Log
+	class NESTAPP_API Log
 	{
 	public:
 		/// @brief 初始化日志系统(Log to Console)
