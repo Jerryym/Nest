@@ -6,6 +6,8 @@
   * 删除Application构造函数中初始化日志系统的代码
   * 实现Log类导出
   * 添加断言(Assert)
+* **NestUI**
+  * 解决DockWidgetManager中的单例指针未进行初始化检查的问题
 
 ## 0.1.1(2024-12-03)
 
