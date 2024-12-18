@@ -18,7 +18,10 @@ namespace NestUI {
 	DockWidgetManager* DockWidgetManager::GetDockManager(QMainWindow* mainWindow)
 	{
 		// FIXED: 在此处插入 return 语句
-		s_Instance = new DockWidgetManager(mainWindow);
+		if (s_Instance == nullptr)
+		{
+			s_Instance = new DockWidgetManager(mainWindow);
+		}
 		return s_Instance;
 	}
 
