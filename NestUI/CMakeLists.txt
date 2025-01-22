@@ -41,6 +41,8 @@ target_include_directories(${NESTUI_LIB_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/vendor/SARibbon/src
 )
 
+# 添加NestApp
+target_link_libraries(${NESTUI_LIB_NAME} PUBLIC NestApp)
 # 添加SARibbon
 add_subdirectory(vendor/SARibbon)
 target_link_libraries(${NESTUI_LIB_NAME} PUBLIC SARibbonBar::SARibbonBar)

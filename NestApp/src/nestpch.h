@@ -14,4 +14,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+//---- Qt Headers ----
+#include <QString>
+//--------------------
+
 #include "Utils/Log.h"
