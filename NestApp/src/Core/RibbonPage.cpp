@@ -8,4 +8,14 @@ namespace NestApp {
     {
     }
 
+	void RibbonPage::addAction(Action* pAction)
+	{
+		m_Actions.insert(pAction->getName(), pAction);
+	}
+
+	Action* RibbonPage::getAction(const QString& SName) const
+	{
+		return m_Actions.value(SName);
+	}
+
 }
