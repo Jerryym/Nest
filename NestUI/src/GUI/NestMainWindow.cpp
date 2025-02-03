@@ -8,4 +8,11 @@ namespace NestUI {
     {
     }
 
+    SARibbonCategory *NestMainWindow::CreateCategory(const NestApp::RibbonPage &page)
+    {
+        SARibbonCategory* pCategory = new SARibbonCategory;
+        pCategory->setCategoryName(page.getPageName());
+        pCategory->setObjectName(page.getName());
+        return pCategory;
+    }
 }

@@ -11,14 +11,23 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # 定义头列表
 set(NESTAPP_HEADERS
     src/Core.h
+	#Core
     src/Core/Application.h
+    src/Core/RibbonPage.h
+	src/Core/Action.h
+	#Utils
     src/Utils/Log.h
+
     src/NestApp.h
 )
 
 # 定义源文件列表
 set(NESTAPP_SOURCES
+	#Core
     src/Core/Application.cpp
+    src/Core/RibbonPage.cpp
+	src/Core/Action.cpp
+	#Utils
     src/Utils/Log.cpp
 )
 
@@ -46,9 +55,17 @@ target_link_libraries(${NESTAPP_LIB_NAME} PUBLIC
 )
 message(STATUS "Link ${NESTAPP_LIB_NAME} PUBLIC Qt6::Core Qt6::Widgets")
 
-# 预处理宏定义
-target_compile_definitions(${NESTAPP_LIB_NAME} PRIVATE NESTAPP_BUILD_DLL)
+# 添加预处理宏定义
+target_compile_definitions(${NESTAPP_LIB_NAME} PRIVATE
+    NESTAPP_BUILD_DLL
+    $<$<CONFIG:Debug>:NEST_ENABLE_ASSERTS>
+)
+
+# 打印预定义的宏
 message(STATUS "macros predefined: #define NESTAPP_BUILD_DLL")
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    message(STATUS "macros predefined: #define NEST_ENABLE_ASSERTS")
+endif()
 
 # 设置目标属性
 include(GNUInstallDirs)

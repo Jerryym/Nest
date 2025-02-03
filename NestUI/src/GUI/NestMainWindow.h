@@ -1,6 +1,9 @@
 #pragma once
+#include <NestApp.h>
+
 #include "Base.h"
 #include "SARibbonMainWindow.h"
+#include "SARibbonCategory.h"
 
 namespace NestUI {
 
@@ -31,6 +34,12 @@ namespace NestUI {
 		virtual uint32_t GetHeight() const = 0;
 		/// @brief 获取窗口标题
 		virtual const QString& GetTitle() const = 0;
+
+	protected:
+		/// @brief 创建ribbon页
+		/// @param page ribbon页
+		/// @return ribbon标签页控件指针 
+		SARibbonCategory* CreateCategory(const NestApp::RibbonPage& page);
 	};
 
 }

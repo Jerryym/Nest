@@ -1,5 +1,4 @@
 #pragma once
-
 #include <QDockWidget>
 #include "Base.h"
 

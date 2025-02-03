@@ -18,6 +18,12 @@ namespace Example {
 		virtual const QString& GetTitle() const override { return m_sProp.m_STitle; }
 
 	private:
+		void Initialize();
+		SARibbonCategory* CreateCategory(const NestApp::RibbonPage& page);
+
+		void CreateTestCategory(SARibbonBar* pRibbon);
+
+	private:
 		NestUI::sWindowProp m_sProp;
 	};
 
