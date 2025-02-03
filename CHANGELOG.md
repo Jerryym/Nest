@@ -1,5 +1,11 @@
 # 版本记录(Change Log)
 
+## 0.1.3(2025-02-03)
+
+* **NestApp**
+  * 添加Ribbon中的按钮类 `Action`
+  * 添加Ribbon标签页类 `RibbonPage`
+
 ## 0.1.2(2024-12-08)
 
 * **NestApp**
